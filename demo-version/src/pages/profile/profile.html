@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+	<img id='logo' alt="logo" src="/assets/imgs/Logo.png" > 
+
+	<!--Personal details section. -->
+	<h3>Your Details</h3>
+		<p class='displayItem'><label>Name: </label>{{user.name}}</p>
+    	<p class='displayItem'><label>Email: </label>{{user.email}}</p>
+
+	<button ion-button (click)="updateUserDetails()">Update Your Details</button>
+
+	<!--Health details section. -->
+	<h3>Health Details</h3>
+
+	<p class='displayItem'><label>Height: </label> {{userHealthDetail.height}}</p>
+	<p class='displayItem'><label>Weight: </label> {{userHealthDetail.weight}}</p>
+	<p class='displayItem'><label>Age: </label> {{userHealthDetail.age}}</p>
+	<p class='displayItem'><label>Activity: </label> {{userHealthDetail.activityLevel}} </p>
+
+	<button ion-button (click)="updateHealthDetail()">Update Health Details</button>
+
+	<!--Workout preferences section. -->
+	<h3>Workout Preferences</h3>
+
+	<p class='displayItem'><label>Type(s): </label> {{userWorkoutDetail.type}}</p>
+	<p class='displayItem'><label>Location: </label> {{userWorkoutDetail.location}}</p>
+	<p class='displayItem'><label>Fitness Level: </label> {{userWorkoutDetail.fitnessLevel}}</p>
+	<p class='displayItem'><label>Day(s) of Workout: </label> {{userWorkoutDetail.dayOfWorkout}}</p>
+
+	<button ion-button (click)="updateWorkoutPreferences()">Update Workout Preferences</button>
+
+	<!--Reminder preferences section. -->
+	<h3>Reminder Preferences</h3>
+
+	<p class='displayItem'><label>Enable Reminders: </label> {{userReminderDetail.enableReminders}}</p>
+	<p class='displayItem'><label>Frequency: </label> {{userReminderDetail.frequency}}</p>
+	<p class='displayItem'><label>Time: </label> {{userReminderDetail.time}}</p>
+
+	<button ion-button (click)="updateReminderPreferences()">Update Reminder Preferences</button>
+
+</ion-content>

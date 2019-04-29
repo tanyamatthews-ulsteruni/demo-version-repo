@@ -1,18 +1,171 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar hideBackButton="true">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content id='bg' padding>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <img id='logo' alt="logo" src="/assets/imgs/Logo.png" > 
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <h3>Welcome {{user.name}}</h3>
+  <h5>Your Dashboard</h5>
+
+<!--BADGES-->
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Your Badges</ion-card-title>
+    </ion-card-header>
+    <ion-card-content> 
+    <p>Get active to unlock more badges!</p>
+    <ion-grid><ion-row>
+      <ion-col>
+          <div>
+            <img [ngClass]='{notAchievedBadge: (goalStats.countOfGoals <1), badge: (goalStats.countOfGoals >0)}' src='../assets/imgs/badges/FirstGoalAchieved.png'><p>First Goal Completed</p>
+            <img [ngClass]='{notAchievedBadge: (goalStats.countOfGoals <10), badge: (goalStats.countOfGoals >9)}' src='../assets/imgs/badges/TenGoalsAchieved.png'><p>Ten Goals Completed</p>
+            <img [ngClass]='{notAchievedBadge: (goalStats.countOfGoals <50), badge: (goalStats.countOfGoals >49)}' src='../assets/imgs/badges/TenGoalsAchieved.png'><p>Fifty Goals Completed</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <img [ngClass]='{notAchievedBadge: (workoutStats.countOfWorkout < 1), badge: (workoutStats.countOfWorkout > 0)}' src='../assets/imgs/badges/FirstWorkoutAchieved.png'><p>First Workout</p>
+            <img [ngClass]='{notAchievedBadge: (workoutStats.countOfWorkout < 10), badge: (workoutStats.countOfWorkout > 9)}' src='../assets/imgs/badges/TenWorkoutsAchieved.png'><p>Ten Workouts</p>
+            <img [ngClass]='{notAchievedBadge: (workoutStats.countOfWorkout < 50), badge: (workoutStats.countOfWorkout > 49)}' src='../assets/imgs/badges/TenWorkoutsAchieved.png'><p>Fifty Workouts</p>
+          </div>
+        </ion-col>
+        <ion-col>
+            <div>
+            <img [ngClass]='{notAchievedBadge: (updatedProfile == false), badge: (updatedProfile == true)}' src='../assets/imgs/badges/UpdatedProfile.png'><p>Updated details</p>
+            <img [ngClass]='{notAchievedBadge: (workoutStats.workoutLevel == "Beginner"), badge: (workoutStats.workoutLevel != "Beginner")}' src='../assets/imgs/badges/LevelUp.png'><p>Level up once</p>
+            <img [ngClass]='{notAchievedBadge: (workoutStats.workoutLevel != "Advanced"), badge: (workoutStats.workoutLevel == "Advanced")}' src='../assets/imgs/badges/LevelUp.png'><p>Level up twice</p>
+        </div>
+      </ion-col>
+    </ion-row></ion-grid>
+  </ion-card-content>
+  </ion-card>
+
+<!--Log latest workout again-->
+  <ion-card>
+    <ion-card-header>
+      Log last workout again
+    </ion-card-header>
+    <ion-card-content>
+        <h5>{{workoutStats.lastWorkoutName}}</h5>
+        <button ion-button (click)="logLastWorkout(workoutStats)">Log last workout</button>
+    </ion-card-content>
+  </ion-card>
+
+<!--Workout History Graph-->
+
+  <ion-card>
+      <ion-card-header>
+        Workout History
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #barCanvas></canvas>
+      </ion-card-content>
+    </ion-card>
+
+<!--REASONS TO WORKOUT-->
+
+  <ion-card>
+    <ion-card-header>
+      Reasons to workout
+    </ion-card-header>
+    <ion-card-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col><div>
+          <img class='dashboardImg' src="../assets/imgs/dashboard/weight-loss.png">
+          <p>Lose body fat</p>
+          <img class='dashboardImg' src="../assets/imgs/dashboard/strength.png">      
+          <p>Build muscle</p>
+      </div></ion-col>
+      <ion-col><div>
+          <img class='dashboardImg' src="../assets/imgs/dashboard/moon.png">
+          <p>Improve sleep</p>
+          <img class='dashboardImg' src="../assets/imgs/dashboard/meditation.png">
+          <p>Improve your mood</p>
+      </div></ion-col>
+      <ion-col><div>
+          <img class='dashboardImg' src="../assets/imgs/dashboard/boy-broad-smile.png">
+          <p>To have fun</p>
+          <img class='dashboardImg' src="../assets/imgs/dashboard/heart-frequency.png">
+          <p>Reduce risk of diseases</p>
+      </div></ion-col>
+    </ion-row>
+    </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+<!--Weight Graph-->
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title>Weight History</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas></canvas>
+      </ion-card-content>
+  </ion-card>
+
+  <!--Workout Level-->
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Your workout level - {{workoutStats.workoutLevel}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h4><span class='bigger'>{{workoutStats.workoutsToNextLevel}} more workouts </span>until you level up - keep up the great work!</h4>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <!--BMI Data-->
+
+  <ion-card>
+    <ion-card-header>
+      BMI - Body Mass Index
+    </ion-card-header>
+    <ion-card-content>
+      <p>Weight - {{userHealthDetail.weight}}</p>
+      <p>Height - {{userHealthDetail.height}}</p>
+      <p class='bigger'>BMI - {{userHealthDetail.bmi}}</p>
+      <p class='bigger'>BMI Classification - {{userHealthDetail.bmiDescription}}</p>
+      <p>For more information on BMI you can visit the <a href="https://www.nhs.uk/live-well/healthy-weight/bmi-calculator/">NHS BMI site</a>.</p>
+      <p>BMI is only a guide, and may not be useful if you are of high bone density or muscle mass as this is not reflected in its scaling.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!--BMR Data-->
+
+ <ion-card>
+    <ion-card-header>
+      BMR - Basal Metabolic Rate 
+    </ion-card-header>
+    <ion-card-content>
+      <p class='bigger'>{{userHealthDetail.bmr}} kcal</p>
+      <p>Basal metabolic rate (BMR) is the total number of calories that your body needs to perform basic, life-sustaining functions. These basal functions include circulation, breathing and sleeping.</p>
+      <p>For more information on BMR and your metabolism, visit the <a href="https://www.nhs.uk/live-well/healthy-weight/metabolism-and-weight-loss/">NHS Metabolism site</a>.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!--Workout Summary-->
+
+  <ion-card>
+    <ion-card-header>
+      Workout Summary 
+    </ion-card-header>
+    <ion-card-content>
+      <p><span class='bigger'>{{workoutStats.countOfWorkout}}</span> total workouts</p>
+      <p><span class='bigger'>{{workoutStats.lastWorkoutName}}</span> last workout</p>
+      <p><span class='bigger'>{{workoutStats.lastWorkoutDay}}</span> date of last workout</p>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>
