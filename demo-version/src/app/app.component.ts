@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform} from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 //page imports
@@ -23,12 +24,13 @@ export class MyApp {
 
     pages: Array <{title: string, component: any}>;
 
+    public auth: AuthService;
+
    constructor(
     platform: Platform, 
     statusBar: StatusBar, 
-    splashScreen: SplashScreen,
-    public auth: AuthService//,
-    //public navCtrl: NavController
+    splashScreen: SplashScreen//,
+    //public auth: AuthService
     ) {
 
         platform.ready().then(() => {

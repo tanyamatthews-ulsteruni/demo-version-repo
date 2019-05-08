@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { FormsModule }   from '@angular/forms';
 //page imports 
@@ -34,9 +35,9 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environment/environment';
 //imports for alternative login using facebook etc. 
-import { Facebook } from '@ionic-native/facebook';
-import { GooglePlus } from '@ionic-native/google-plus';
-import { TwitterConnect } from '@ionic-native/twitter-connect';
+import { Facebook } from '@ionic-native/facebook/ngx';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
+import { TwitterConnect } from '@ionic-native/twitter-connect/ngx';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -99,6 +100,7 @@ import { RestProvider } from '../providers/rest/rest';
     PasswordResetPage
   ],
   providers: [
+    StatusBar,
     SplashScreen,
     Facebook,
     GooglePlus,
@@ -106,7 +108,6 @@ import { RestProvider } from '../providers/rest/rest';
     TwitterConnect,
     UserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider,
     RestProvider
   ]
 })

@@ -15,7 +15,7 @@ import * as firebase from 'firebase';
 
 export class WorkoutDetailPage {
 
-  workout: Array<String> = [];
+  workout: any;
   workoutName: String;
   exerciseInWorkoutDetail: Array<String> = [];
   musclesWorked: Array<String> = [];

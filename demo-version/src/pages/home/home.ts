@@ -53,7 +53,7 @@ export class HomePage {
   ionViewDidEnter(){
     this.calculateBMI(this.userHealthDetail);
     this.userService.getCurrentUser()
-    .then(user => { 
+    .then(user => {
       this.user = user;
     }, err => console.log(err))
 
@@ -116,7 +116,7 @@ export class HomePage {
   calculateBMR(userHealthDetail){
     var user = firebase.auth().currentUser;
     var userId = user.uid;
-    const bmr; 
+    var bmr; 
     firebase.database().ref('/' + userId + '/healthDetails/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot => {
         userHealthDetail.weight = childSnapshot.val().weight;
@@ -231,6 +231,7 @@ export class HomePage {
 
   generateDoughnutChart(w){
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+
             type: 'doughnut',
             data: {
                 labels: ["Workouts Completed", "Workouts Needed to Level Up"],
@@ -239,11 +240,19 @@ export class HomePage {
                     data: [w.countOfWorkout, w.workoutsToNextLevel],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
                     ],
                     hoverBackgroundColor: [
                         "#FF6384",
-                        "#36A2EB"
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56"
                     ]
                 }]
             }
@@ -269,13 +278,13 @@ export class HomePage {
   }
 
   getWorkoutHistory(){
-    const dec = 0;
-    const jan = 0;
-    const feb = 0;
-    const mar = 0;
-    const apr = 0;
-    const may = 0;
-    const barData = [];
+    var dec = 0;
+    var jan = 0;
+    var feb = 0;
+    var mar = 0;
+    var apr = 0;
+    var may = 0;
+    var barData = [];
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     firebase.database().ref('/' + userId + '/workoutHistory/').once('value').then(function(snapshot){
@@ -385,9 +394,4 @@ export class HomePage {
         console.log("GOALS = " + g.countOfGoals);
 
       }
-
-
-
-        
-
 }

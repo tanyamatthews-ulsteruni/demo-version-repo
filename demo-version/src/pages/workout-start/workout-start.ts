@@ -17,6 +17,7 @@ export class WorkoutStartPage {
   @ViewChild(Slides) slides: Slides;
 
   workoutId: String; 
+  workout: any;
   workoutName: String;
   exerciseInWorkoutDetail: Array<String> = [];
 
@@ -32,6 +33,7 @@ export class WorkoutStartPage {
   buttonClicked: boolean = false;
 
   addHideWeightText = "Add Exercise Weight";
+  weight: any;
 
   constructor(
     public navCtrl: NavController, 

@@ -24,7 +24,8 @@ export class ExerciseListPage {
   	this.restProvider.getExercises()
   .then(data => {
     if(data.hasOwnProperty('results')){
-      this.exercises = data.results;
+      //this.exercises = data.results;
+      this.exercises = data['results'];
       for(let ex of this.exercises){
         ex.description = ex.description.toString().replace(/<\/?[^>]+(>|$)/g, "");
       }
@@ -46,7 +47,8 @@ export class ExerciseListPage {
 
   applyFilter(){
     this.restProvider.getExercisesWithFilter(this.exType, this.exEquipment).then(data =>{
-      this.exercises = data.results;
+      //this.exercises = data.results;
+      this.exercises = data['results'];
       for(let ex of this.exercises){
         ex.description = ex.description.toString().replace(/<\/?[^>]+(>|$)/g, "");
       }

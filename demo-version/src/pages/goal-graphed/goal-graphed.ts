@@ -35,6 +35,8 @@ export class GoalGraphedPage {
   weightGraphData = [];
   barChartData:any;
 
+  lineChart: any; barChart: any; doughnutChart: any;
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad GoalGraphedPage');
     
@@ -66,8 +68,6 @@ export class GoalGraphedPage {
     }))
     });
     return healthDetails;
-
-    //this.generateLineChart(healthDetails);
   }
 
 	generateLineChart(w){
@@ -77,8 +77,7 @@ export class GoalGraphedPage {
    		labels.push(w[i].date.substring(0, 15));
    		weight.push(w[i].weight);
 	}
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-
+  this.lineChart = new Chart(this.lineCanvas.nativeElement, {
             type: 'line',
             data: {
                 labels: labels,
@@ -115,12 +114,12 @@ export class GoalGraphedPage {
 
 
  getWorkoutHistory(){
-    const dec = 0;
-    const jan = 0;
-    const feb = 0;
-    const mar = 0;
-    const apr = 0;
-    const may = 0;
+    var dec = 0;
+    var jan = 0;
+    var feb = 0;
+    var mar = 0;
+    var apr = 0;
+    var may = 0;
     const barData = [];
     var user = firebase.auth().currentUser;
     var userId = user.uid;

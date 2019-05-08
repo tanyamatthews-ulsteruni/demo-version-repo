@@ -34,17 +34,21 @@ export class ExerciseDetailPage {
   getImage(){
   	console.log("DA ID " + this.ex.id);
     this.restProvider.getExerciseImage(this.ex.id).then(data =>{
-      this.exerciseImageData = data.results;
+    //  this.exerciseImageData = data.results;
+      this.exerciseImageData = data['results'];
     });
   }
 
   getExerciseDetail(){
   	console.log("ID = " + this.ex.id);
   	this.restProvider.getExerciseMoreData(this.ex.id).then(data =>{
-  		this.exercises = data;
-  		this.muscles = data.muscles;
-  		this.second_muscles = data.secondary_muscles;
-  		this.equipment = data.equipment;
+      this.exercises = data;
+  		//this.muscles = data.muscles;
+      this.muscles = data['muscles'];
+  		//this.second_muscles = data.secondary_muscles;
+      this.second_muscles = data['secondary_muscles'];
+  		//this.equipment = data.equipment;
+      this.equipment = data['equipment'];
   	});
   }
 

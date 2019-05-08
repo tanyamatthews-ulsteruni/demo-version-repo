@@ -68,7 +68,7 @@ export class GoalsPage {
   getCurrentWorkoutCount(w){
     var user = firebase.auth().currentUser;
     var userId = user.uid;
-    const count;
+    var count = 0;
     firebase.database().ref('/' + userId + '/workoutHistory/').once('value').then(function(snapshot){
       count = snapshot.numChildren();
       w.countOfWorkout = snapshot.numChildren();
@@ -93,7 +93,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     const weightGoals = [];
-    const ref;
+    var ref = '';
     firebase.database().ref('/' + userId + '/goals/weightGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
       ref = childSnapshot.key;
@@ -119,7 +119,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     const workoutGoals = [];
-    const ref;
+    var ref = '';
     firebase.database().ref('/' + userId + '/goals/workoutGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
         ref = childSnapshot.key;
@@ -145,7 +145,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     const otherGoals = [];
-    const ref;
+    var ref = '';
     firebase.database().ref('/' + userId + '/goals/otherGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
         ref = childSnapshot.key;
@@ -171,7 +171,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     const workoutGoalsComplete = [];
-    const ref;
+    var ref = '';
     firebase.database().ref('/' + userId + '/goals/workoutGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
         ref = childSnapshot.key;
@@ -201,7 +201,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     const weightGoalsComplete = [];
-    const ref;
+    var ref = '';
     firebase.database().ref('/' + userId + '/goals/weightGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
         ref = childSnapshot.key;
@@ -231,7 +231,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     const otherGoalsComplete = [];
-    const ref;
+    var ref = '';
     firebase.database().ref('/' + userId + '/goals/otherGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
         ref = childSnapshot.key;
@@ -309,9 +309,7 @@ export class GoalsPage {
     var user = firebase.auth().currentUser;
     var userId = user.uid;
     //initialise vars.
-    const ref;
-    const currentWeight;
-    const weightTarget;
+    var ref = ''; var currentWeight = 0; var weightTarget = 0;
     //get weight target goal
     firebase.database().ref('/' + userId + '/goals/weightGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{
@@ -343,7 +341,7 @@ export class GoalsPage {
   autoCheckForCompleteWorkoutGoal(alt, nav){
     var user = firebase.auth().currentUser; var userId = user.uid;
     //initialise vars.
-    const ref; const count; const workoutTarget;
+    var ref = ''; var count = 0; var workoutTarget = 0;
     //get workout target goal
     firebase.database().ref('/' + userId + '/goals/workoutGoals/').once('value').then(function(snapshot){
       snapshot.forEach((childSnapshot=>{

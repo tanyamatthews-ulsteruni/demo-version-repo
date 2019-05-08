@@ -33,7 +33,8 @@ export class WorkoutsPage {
   this.restProvider.getAllWorkoutData()
   .then(data => {
     if(data.hasOwnProperty('results')){
-      this.workouts = data.results;
+      //this.workouts = data.results;
+      this.workouts = data['results'];
       for(let w of this.workouts){
         //pushing workout into array. Here you can access id through 'id' and name using 'comment.'
         this.workoutNames.push(w);

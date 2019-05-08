@@ -69,8 +69,8 @@ export class WorkoutPlanPage {
   getPreferredWorkouts(workout){
     //clear array on reload of page, sometimes this can cache e.g. if updating profile and then the array is added too. 
     this.preferredWorkoutsName = [];
-    const locationMatchString;
-    const typeMatchString;
+    var locationMatchString;
+    var typeMatchString;
     this.restProvider.getAllWorkoutData()
     .then(data => {
       if(data.hasOwnProperty('results')){
@@ -87,7 +87,8 @@ export class WorkoutPlanPage {
         }else{
           typeMatchString = '#Cardio';
         }
-        this.workouts = data.results;
+        //this.workouts = data.results;
+        this.workouts = data['results'];
         for(let w of this.workouts){
           //pushing workout into array. Here you can access id through 'id' and name using 'comment.'
           if(w.comment.includes(locationMatchString) && w.comment.includes(typeMatchString)){
