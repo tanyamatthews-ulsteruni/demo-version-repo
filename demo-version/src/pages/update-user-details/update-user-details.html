@@ -15,12 +15,12 @@
       <ion-label floating>Full Name</ion-label>
       <ion-input type="text" formControlName="fullname" (ngModel)="fullname"></ion-input>
     </ion-item>
-    <ion-item>
+    <!--<ion-item>
       <ion-label floating>Email</ion-label>
       <ion-input type="text" formControlName="email" (ngModel)="email"></ion-input>
-    </ion-item>
+    </ion-item>-->
 
-    <button [disabled]="!email || !fullname ion-button (click)="update(fullname, email)">Update</button>
+    <button [disabled]="!email || !fullname ion-button (click)="update(fullname)">Update</button>
 
 
 </ion-content>

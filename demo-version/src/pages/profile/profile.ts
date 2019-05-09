@@ -72,8 +72,6 @@ export class ProfilePage {
         userReminderDetail.enableReminders = childSnapshot.val().enableReminders;
         userReminderDetail.frequency = childSnapshot.val().frequency;
         userReminderDetail.time = childSnapshot.val().time;
-
-        //this.reminderFrequency = childSnapshot.val().frequency;
       }));
     });
   } 
@@ -86,7 +84,6 @@ export class ProfilePage {
         userWorkoutDetail.fitnessLevel = childSnapshot.val().fitnessLevel;
         userWorkoutDetail.location = childSnapshot.val().location;
         userWorkoutDetail.type = childSnapshot.val().type;
-        userWorkoutDetail.dayOfWorkout = childSnapshot.val().dayOfWorkout;
       }))
     });
   }

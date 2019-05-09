@@ -39,10 +39,15 @@ export class UpdateReminderDetailsPage {
     var userId = firebase.auth().currentUser.uid;
     firebase.database().ref('/' + userId + '/reminderPreferences/').once('value').then(function(snapshot){
 
+
+    if(snapshot.exists()){
      snapshot.forEach((childSnapshot => {
         console.log('/' + userId + '/reminderPreferences/' + childSnapshot.key);
         firebase.database().ref('/' + userId + '/reminderPreferences/' + childSnapshot.key).update({enableReminders: remindersEnabled, frequency: reminderFrequency, time: reminderTime});//, age: this.age, height: this.height ,  weight: this.weight});
       }));
+    }else{
+      firebase.database().ref('/' + userId + '/reminderPreferences/').push({enableReminders: remindersEnabled, frequency: reminderFrequency, time: reminderTime});
+    }
 
     })
 

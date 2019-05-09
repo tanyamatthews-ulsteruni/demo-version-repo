@@ -29,16 +29,19 @@ export class UpdateWorkoutDetailsPage {
     var userId = firebase.auth().currentUser.uid;
     firebase.database().ref('/' + userId + '/workoutPreferences/').once('value').then(function(snapshot){
 
-     snapshot.forEach((childSnapshot => {
-        console.log('/' + userId + '/workoutPreferences/' + childSnapshot.key);
-        firebase.database().ref('/' + userId + '/workoutPreferences/' + childSnapshot.key).update({dayOfWorkout: workoutDay, fitnessLevel: workoutLevel, location: workoutLocation, type: workoutTypes});
-      }));
+
+    if(snapshot.exists()){
+       snapshot.forEach((childSnapshot => {
+          firebase.database().ref('/' + userId + '/workoutPreferences/' + childSnapshot.key).update({fitnessLevel: workoutLevel, location: workoutLocation, type: workoutTypes});
+        }));
+    }else{
+      firebase.database().ref('/' + userId + '/workoutPreferences/').push({fitnessLevel: workoutLevel, location: workoutLocation, type: workoutTypes});
+    }
 
     })
 
     //return to previous page 
     this.navCtrl.pop();
- 
   }
 
 

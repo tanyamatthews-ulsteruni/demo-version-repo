@@ -26,7 +26,7 @@ export class WorkoutPlanPage {
 
   ionViewDidEnter() {
     this.getWorkoutPreferencesForUser(this.userWorkoutDetail);
-    this.numWorkoutsEachWeek(this.userWorkoutDetail);
+    //this.numWorkoutsEachWeek(this.userWorkoutDetail);
     this.getPreferredWorkouts(this.userWorkoutDetail);
 
   }
@@ -39,12 +39,11 @@ export class WorkoutPlanPage {
         userWorkoutDetail.setLocation(childSnapshot.val().location);
         userWorkoutDetail.setFitnessLevel(childSnapshot.val().fitnessLevel);
         userWorkoutDetail.setType(childSnapshot.val().type);
-        userWorkoutDetail.setDayOfWorkout(childSnapshot.val().dayOfWorkout);
       }))
     });
   }
 
-  numWorkoutsEachWeek(userWorkoutDetail){
+ /* numWorkoutsEachWeek(userWorkoutDetail){
 	var user = firebase.auth().currentUser;
     var userId = user.uid;
     firebase.database().ref('/' + userId + '/workoutPreferences/').once('value').then(function(snapshot){
@@ -52,7 +51,7 @@ export class WorkoutPlanPage {
     		userWorkoutDetail.setDayOfWorkout(childSnapshot.val().dayOfWorkout);
     	}))
 	});
-	}	
+	}	*/
 
   getProfilePage(){
   	this.navCtrl.push(ProfilePage);

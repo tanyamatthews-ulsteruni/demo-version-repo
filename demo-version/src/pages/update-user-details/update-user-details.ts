@@ -22,7 +22,7 @@ export class UpdateUserDetailsPage {
     console.log('ionViewDidLoad UpdateUserDetailsPage');
   }
 
-  update(fullname, email){
+  update(fullname){
   	var user = firebase.auth().currentUser;
   	user.updateProfile({
   		displayName: fullname,

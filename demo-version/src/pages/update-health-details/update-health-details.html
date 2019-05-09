@@ -36,6 +36,6 @@
 					<ion-option value="1.9">Extra active</ion-option>
 				</ion-select>
 			</ion-item>
-			<button [disabled]="!weight || !height || !age" ion-button (click)="changeDetails(age, weight, height)">Update</button>
+			<button [disabled]="!weight || !height || !age || !activityLevel" ion-button (click)="changeDetails(age, weight, height, activityLevel)">Update</button>
 
 </ion-content>

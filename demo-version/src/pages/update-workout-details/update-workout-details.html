@@ -36,18 +36,7 @@
 						<ion-option value="Advanced">Advanced</ion-option>
 					</ion-select>
 				</ion-item>
-				<ion-item>
-				  <ion-label>Preferred Day</ion-label>
-				  <ion-select required multiple="true" [(ngModel)]="workoutDay">
-				    <ion-option value="Monday">Monday</ion-option>
-				    <ion-option value="Tuesday">Tuesday</ion-option>
-				    <ion-option value="Tuesday">Wednesday</ion-option>
-				    <ion-option value="Tuesday">Thursday</ion-option>
-				    <ion-option value="Tuesday">Friday</ion-option>
-				    <ion-option value="Tuesday">Saturday</ion-option>
-				    <ion-option value="Tuesday">Sunday</ion-option>
-				  </ion-select>
-				</ion-item>
+				
 				<button [disabled]="!workoutLevel || !workoutLocation || !workoutTypes" ion-button (click)="update(workoutTypes, workoutLocation, workoutLevel, workoutDay)">Update</button>
 
 </ion-content>

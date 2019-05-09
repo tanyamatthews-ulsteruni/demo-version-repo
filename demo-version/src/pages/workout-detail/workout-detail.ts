@@ -50,7 +50,6 @@ export class WorkoutDetailPage {
   }
 
   startWorkout(x, y){
-    //console.log("Data to pass: " + this.workoutId);
     this.navCtrl.push(WorkoutStartPage, {
       id: x, 
       name: y

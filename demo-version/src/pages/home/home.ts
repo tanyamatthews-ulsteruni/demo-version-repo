@@ -236,7 +236,7 @@ export class HomePage {
             data: {
                 labels: ["Workouts Completed", "Workouts Needed to Level Up"],
                 datasets: [{
-                    label: '# of Votes',
+                    label: '# of Workouts',
                     data: [w.countOfWorkout, w.workoutsToNextLevel],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
