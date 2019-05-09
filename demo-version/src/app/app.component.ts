@@ -29,8 +29,8 @@ export class MyApp {
    constructor(
     platform: Platform, 
     statusBar: StatusBar, 
-    splashScreen: SplashScreen//,
-    //public auth: AuthService
+    splashScreen: SplashScreen,
+    public auth: AuthService
     ) {
 
         platform.ready().then(() => {
