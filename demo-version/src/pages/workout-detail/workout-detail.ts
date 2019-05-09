@@ -15,7 +15,7 @@ import * as firebase from 'firebase';
 
 export class WorkoutDetailPage {
 
-  workout: any;
+  workout: Array<String> = [];
   workoutName: String;
   exerciseInWorkoutDetail: Array<String> = [];
   musclesWorked: Array<String> = [];
@@ -29,7 +29,7 @@ export class WorkoutDetailPage {
       private alertCtrl: AlertController
     ) 
   {
-  	this.workout.push(navParams.get('data'));
+    this.workout.push(navParams.get('data'));
   }
 
   ionViewDidLoad() {
