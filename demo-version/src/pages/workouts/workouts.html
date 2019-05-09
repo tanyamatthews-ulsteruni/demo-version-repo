@@ -27,7 +27,7 @@
 	  	</ion-item>
 
 	<ion-item>
-		<button [disabled]='!workoutTypeFilter' ion-button (click)="applyFilter()">Apply Filter</button>
+		<button [disabled]='!workoutTypeFilter && !equipFilter' ion-button (click)="applyFilter()">Apply Filter</button>
 
 		<button ion-button (click)="clearFilter()">Clear Filter</button>
 	</ion-item>

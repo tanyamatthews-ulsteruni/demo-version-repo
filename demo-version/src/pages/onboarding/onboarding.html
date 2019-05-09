@@ -48,7 +48,7 @@
 				    <ion-option value="Tuesday">Sunday</ion-option>
 				  </ion-select>
 				</ion-item>
-				<button [disabled]="!workoutLevel || !workoutLocation || !workoutTypes" ion-button (click)="nextSlide()">Next</button>
+				<button [disabled]="!workoutLevel || !workoutLocation || !workoutTypes || !workoutDay" ion-button (click)="nextSlide()">Next</button>
 		</ion-slide>
 
 		<ion-slide>

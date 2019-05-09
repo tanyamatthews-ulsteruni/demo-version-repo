@@ -71,8 +71,14 @@ export class WorkoutsPage {
 
     if(data.hasOwnProperty('results')){
       for(let w of this.workouts){
-        if(w.comment.includes(this.workoutTypeFilter) && w.comment.includes(this.equipment)){
-          this.workoutNames.push(w);
+        if(this.workoutTypeFilter != null){
+          if(w.comment.includes(this.workoutTypeFilter) && w.comment.includes(this.equipment)){
+           this.workoutNames.push(w);
+          }
+        }else{
+          if(w.comment.includes(this.equipment)){
+           this.workoutNames.push(w);
+          }
         }
       }
     }
