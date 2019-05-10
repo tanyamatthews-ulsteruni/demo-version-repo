@@ -24,7 +24,7 @@ export class MyApp {
 
     pages: Array <{title: string, component: any}>;
 
-    public auth: AuthService;
+    //public auth: AuthService;
 
    constructor(
     platform: Platform, 
